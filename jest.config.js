@@ -1,26 +1,22 @@
 module.exports = {
   rootDir: "src",
+  testEnvironment: "jsdom",
   transform: {
     "^.+\\.(j|t)sx?$": "babel-jest",
   },
-  transformIgnorePatterns: ["/node_modules/(?!lbh-frontend|@mtfh)"],
+  //   transformIgnorePatterns: ["/node_modules/(?!lbh-frontend|@mtfh)"],
   moduleNameMapper: {
     "\\.(css|scss)$": "identity-obj-proxy",
   },
-  setupFiles: [],
-  setupFilesAfterEnv: [
-    "../node_modules/@testing-library/jest-dom/dist/index.js",
-    "@hackney/mtfh-test-utils",
-    "./test-utils.tsx",
-  ],
+  moduleDirectories: ["node_modules"],
+  setupFilesAfterEnv: ["@testing-library/jest-dom", "@hackney/mtfh-test-utils"],
   coverageDirectory: "../coverage",
-  coveragePathIgnorePatterns: [],
   coverageThreshold: {
     global: {
-      statements: 99.31,
-      branches: 98.11,
-      functions: 98.59,
-      lines: 99.29,
+      statements: 100,
+      branches: 100,
+      functions: 100,
+      lines: 100,
     },
   },
 };
