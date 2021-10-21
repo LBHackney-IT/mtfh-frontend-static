@@ -1,6 +1,6 @@
+import React from "react";
 import { render } from "@hackney/mtfh-test-utils";
 import { screen } from "@testing-library/react";
-
 import App from "./app";
 
 describe("<App />", () => {

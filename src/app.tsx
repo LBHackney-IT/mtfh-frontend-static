@@ -9,6 +9,9 @@ export default function App(): JSX.Element {
       <Route path="/static">
         <StaticView />
       </Route>
+      <Route>
+        <div>404</div>
+      </Route>
     </Switch>
   );
 }
