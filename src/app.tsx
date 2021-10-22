@@ -1,13 +1,12 @@
-import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import { StaticView } from "./views/static-view";
+import { ProcessesMenuView } from "./views/processes-menu-view";
 
 export default function App(): JSX.Element {
   return (
     <Switch>
-      <Route path="/static">
-        <StaticView />
+      <Route path="/static/processes-menu/:origin/:id">
+        <ProcessesMenuView />
       </Route>
       <Route>
         <div>404</div>

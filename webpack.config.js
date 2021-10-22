@@ -1,7 +1,6 @@
 const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
-const webpack = require("webpack");
-const { ImportMapWebpackPlugin } = require("@hackney/webpack-import-map-plugin");
+const path = require("path");
 
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
@@ -12,26 +11,27 @@ module.exports = (webpackConfigEnv, argv) => {
   });
 
   return merge(defaultConfig, {
-    entry: {
-      static: defaultConfig.entry,
-    },
-    output: {
-      filename: "[name].[contenthash].js",
-    },
     module: {
       rules: [
         {
           test: /\.scss$/i,
-          use: ["style-loader", "css-loader", "sass-loader"],
+          use: [
+            "style-loader",
+            { loader: "css-loader", options: { sourceMap: false } },
+            {
+              loader: "sass-loader",
+              options: { sourceMap: false },
+            },
+          ],
         },
       ],
     },
-    externals: ["react-router-dom", "formik", "yup"],
-    plugins: [
-      new ImportMapWebpackPlugin({
-        namespace: "@mtfh",
-        basePath: process.env.APP_CDN || "http://localhost:8000",
-      }),
-    ],
+    resolve: {
+      alias: {
+        "@components": path.resolve(__dirname, "src/components"),
+      },
+      extensions: [".ts", ".tsx", ".js"],
+    },
+    externals: ["@mtfh/common", "react-router-dom"],
   });
 };
