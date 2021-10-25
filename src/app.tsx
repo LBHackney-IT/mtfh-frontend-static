@@ -5,7 +5,7 @@ import { ProcessesMenuView } from "./views/processes-menu-view";
 export default function App(): JSX.Element {
   return (
     <Switch>
-      <Route path="/static/processes-menu/:origin/:id">
+      <Route path="/static/processes-menu/:entityType/:id">
         <ProcessesMenuView />
       </Route>
       <Route>

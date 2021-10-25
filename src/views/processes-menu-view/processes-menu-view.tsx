@@ -49,19 +49,17 @@ const menuItems = [
 ];
 
 export const ProcessesMenuView = () => {
-  const { id, origin } = useParams<{ id: string; origin: string }>();
+  const { id, entityType } = useParams<{ id: string; entityType: string }>();
 
   return (
     <Layout data-testid="processes-menu" className="mtfh-static-processes-menu">
-      <Link as={RouterLink} to={`/${origin}/${id}`} variant="back-link">
+      <Link as={RouterLink} to={`/${entityType}/${id}`} variant="back-link">
         {locale.backButton}
       </Link>
       <Heading as="h1">{locale.processesMenu.title}</Heading>
-      <p className="mtfh-static-processes-menu__description">
-        Start a process by selecting a process category below. <br />
-        Where a process is not yet supported in <strong>Manage My Home</strong> these
-        links will open the appropriate interim Google form.
-      </p>
+      <div className="mtfh-static-processes-menu__description">
+        {locale.processesMenu.description()}
+      </div>
       <ul className="mtfh-static-processes-menu__list">
         {menuItems.map((item, index) => (
           <li key={index}>
