@@ -1,6 +1,5 @@
 const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
-const webpack = require("webpack");
 const { ImportMapWebpackPlugin } = require("@hackney/webpack-import-map-plugin");
 
 module.exports = (webpackConfigEnv, argv) => {
@@ -30,7 +29,7 @@ module.exports = (webpackConfigEnv, argv) => {
     plugins: [
       new ImportMapWebpackPlugin({
         namespace: "@mtfh",
-        basePath: process.env.APP_CDN || "http://localhost:8000",
+        basePath: process.env.APP_CDN || "http://localhost:8980",
       }),
     ],
   });
