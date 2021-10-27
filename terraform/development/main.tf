@@ -11,7 +11,7 @@ terraform {
   }
 }
 resource "aws_s3_bucket" "frontend-bucket-development" {
-  bucket = "tl-housing-static-frontend-development.hackney.gov.uk"
+  bucket = "lbh-tl-housing-static-frontend-development.hackney.gov.uk"
   acl    = "private"
   versioning {
     enabled = true
